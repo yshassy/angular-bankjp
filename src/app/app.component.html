@@ -1,5 +1,9 @@
 <div class="card">
   <div class="card-body">
-    <app-bankjp></app-bankjp>
+    <app-bankjp [parentForm]="parentForm"></app-bankjp>
   </div>
 </div>
+
+<p>
+  Form Status: {{ parentForm.status }}
+</p>

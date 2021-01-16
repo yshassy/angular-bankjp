@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { BankjpService } from '../../service/bankjp/bankjp.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-bankjp',
@@ -7,17 +8,15 @@ import { BankjpService } from '../../service/bankjp/bankjp.service';
   styleUrls: ['./bankjp.component.css']
 })
 export class BankjpComponent implements OnInit {
+  @Input() parentForm: FormGroup;
   banks;
-  selectedBank;
   branches;
-  selectedBranch;
 
   constructor(private bankjpService: BankjpService) {
     this.bankjpService.getBanks()
       .then(
         (response) => {
           this.banks = response;
-          console.log(this.banks);
         }
       );
   }
@@ -28,7 +27,6 @@ export class BankjpComponent implements OnInit {
       .then(
         (response) => {
           this.branches = response;
-          console.log(this.branches);
         }
       );
   }

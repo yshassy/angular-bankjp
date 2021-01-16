@@ -1,16 +1,25 @@
-<label>Bank</label>
-
-<ng-select #select [items]="banks" [searchable]="false" [(ngModel)]="selectedBank" bindLabel="name" bindValue="code" (change)="onBankChange($event)">
+<form [formGroup]="parentForm">
+  <label>Bank</label>
+  <div class='error'
+    *ngIf="parentForm.controls.selectedBank.hasError('required') && (parentForm.controls.selectedBank.dirty || parentForm.controls.selectedBank.touched)">
+    <label>Bank is Required!</label>
+  </div>
+  <ng-select #select [items]="banks" [searchable]="false" formControlName="selectedBank" bindLabel="name"
+    bindValue="code" (change)="onBankChange($event)">
     <ng-template ng-header-tmp>
-        <input style="width: 100%; line-height: 24px" type="text" (input)="select.filter($event.target.value)"/>
+      <input style="width: 100%; line-height: 24px" type="text" (input)="select.filter($event.target.value)" />
     </ng-template>
-</ng-select>
+  </ng-select>
 
-<label>Branch</label>
-
-<ng-select #select [items]="branches" [searchable]="false" [(ngModel)]="selectedBranch" bindLabel="name" bindValue="code">
+  <label>Branch</label>
+  <div class='error'
+    *ngIf="parentForm.controls.selectedBranch.hasError('required') && (parentForm.controls.selectedBranch.dirty || parentForm.controls.selectedBranch.touched)">
+    <label>Branch is Required!</label>
+  </div>
+  <ng-select #select [items]="branches" [searchable]="false" formControlName="selectedBranch" bindLabel="name"
+    bindValue="code">
     <ng-template ng-header-tmp>
-        <input style="width: 100%; line-height: 24px" type="text" (input)="select.filter($event.target.value)"/>
+      <input style="width: 100%; line-height: 24px" type="text" (input)="select.filter($event.target.value)" />
     </ng-template>
-</ng-select>
-
+  </ng-select>
+</form>
