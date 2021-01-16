@@ -1,0 +1,16 @@
+<label>Bank</label>
+
+<ng-select #select [items]="banks" [searchable]="false" [(ngModel)]="selectedBank" bindLabel="name" bindValue="code" (change)="onBankChange($event)">
+    <ng-template ng-header-tmp>
+        <input style="width: 100%; line-height: 24px" type="text" (input)="select.filter($event.target.value)"/>
+    </ng-template>
+</ng-select>
+
+<label>Branch</label>
+
+<ng-select #select [items]="branches" [searchable]="false" [(ngModel)]="selectedBranch" bindLabel="name" bindValue="code">
+    <ng-template ng-header-tmp>
+        <input style="width: 100%; line-height: 24px" type="text" (input)="select.filter($event.target.value)"/>
+    </ng-template>
+</ng-select>
+
